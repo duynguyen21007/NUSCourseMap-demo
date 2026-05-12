@@ -3,68 +3,205 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ContiNUS - Working Demo</title>
+    <title>ContiNUS - Full Platform Demo</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="window-mockup">
-      <div class="window-header">
-        <div class="dots">
-          <div class="dot red"></div>
-          <div class="dot yellow"></div>
-          <div class="dot green"></div>
-        </div>
-        <div class="search-bar">⚙️ Calculating Overlap...</div>
-      </div>
-
-      <div class="engine-container">
-        <div class="combination-title">
-          <select id="primary-select">
-            <option value="AI_MAJOR">AI Major</option>
-            <option value="CS_MAJOR">Computer Science Major</option>
-          </select>
-          <span class="plus-icon">+</span>
-          <select id="secondary-select">
-            <option value="MATH_2ND_MAJOR">Second Major in Mathematics</option>
-            <option value="BIZ_2ND_DEGREE">Double Degree in Business</option>
-            <option value="DATA_MINOR">Minor in Data Engineering</option>
-          </select>
-        </div>
-
-        <div class="progress-container">
-          <div id="bar-primary" class="bar-segment" title="Primary MCs"></div>
-          <div
-            id="bar-overlap"
-            class="bar-segment"
-            title="Overlapping MCs"
-          ></div>
-          <div
-            id="bar-secondary"
-            class="bar-segment"
-            title="Secondary MCs"
-          ></div>
-        </div>
-        <div class="progress-labels">
-          <span>Primary Major</span>
-          <span id="label-overlap">Overlap (0 MCs)</span>
-          <span>Second Degree / Minor</span>
-        </div>
-
-        <div class="stats-row">
-          <div class="stat-box">
-            <div class="stat-value" id="stat-standard">160</div>
-            <div class="stat-label">Standard Graduation MCs</div>
+    <div class="app-layout">
+      <aside class="main-sidebar">
+        <div class="brand">ContiNUS</div>
+        <nav>
+          <div class="nav-item active" data-target="view-browser">
+            🔍 Curriculum Browser
           </div>
-          <div class="stat-box highlight">
-            <div class="stat-value green" id="stat-overlap">0</div>
-            <div class="stat-label">Overlapping MCs Detected</div>
+          <div class="nav-item" data-target="view-comparator">
+            ⚖️ Major Comparator
           </div>
-          <div class="stat-box">
-            <div class="stat-value red" id="stat-total">160</div>
-            <div class="stat-label">New Total MCs Required</div>
+          <div class="nav-item" data-target="view-planner">
+            📅 Semester Planner
+          </div>
+          <div class="nav-item" data-target="view-engine">⚙️ Degree Engine</div>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <div id="view-browser" class="app-view active">
+          <div class="view-header">
+            <h2>Curriculum Browser</h2>
+            <input
+              type="text"
+              id="module-search"
+              class="search-input"
+              placeholder="Search module code (e.g. CS2030S)..."
+            />
+          </div>
+          <div class="view-body">
+            <table class="module-table">
+              <thead>
+                <tr>
+                  <th>Code</th>
+                  <th>Title</th>
+                  <th>MCs</th>
+                </tr>
+              </thead>
+              <tbody id="browser-table-body"></tbody>
+            </table>
           </div>
         </div>
-      </div>
+
+        <div id="view-comparator" class="app-view">
+          <div class="view-header">
+            <h2>Major Comparator</h2>
+          </div>
+          <div class="view-body comparator-grid">
+            <div class="comp-col">
+              <h3>AI Major (Core)</h3>
+              <div id="comp-ai-list"></div>
+            </div>
+            <div class="comp-col">
+              <h3>Overlap</h3>
+              <div id="comp-overlap-list"></div>
+            </div>
+            <div class="comp-col">
+              <h3>Math Major (Core)</h3>
+              <div id="comp-math-list"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="view-planner" class="app-view">
+          <div class="view-header">
+            <h2>Semester Planner</h2>
+            <p style="color: #64748b; font-size: 14px">
+              Drag modules to plan your semesters.
+            </p>
+          </div>
+          <div class="view-body planner-grid">
+            <div
+              class="sem-column"
+              ondrop="drop(event)"
+              ondragover="allowDrop(event)"
+            >
+              <div class="sem-title">Module Bank</div>
+              <div
+                class="draggable-card"
+                draggable="true"
+                ondragstart="drag(event)"
+                id="mod1"
+              >
+                CS1101S
+              </div>
+              <div
+                class="draggable-card"
+                draggable="true"
+                ondragstart="drag(event)"
+                id="mod2"
+              >
+                MA1521
+              </div>
+              <div
+                class="draggable-card"
+                draggable="true"
+                ondragstart="drag(event)"
+                id="mod3"
+              >
+                IS1108
+              </div>
+              <div
+                class="draggable-card"
+                draggable="true"
+                ondragstart="drag(event)"
+                id="mod4"
+              >
+                CS2030S
+              </div>
+              <div
+                class="draggable-card"
+                draggable="true"
+                ondragstart="drag(event)"
+                id="mod5"
+              >
+                GEA1000
+              </div>
+            </div>
+            <div
+              class="sem-column"
+              ondrop="drop(event)"
+              ondragover="allowDrop(event)"
+            >
+              <div class="sem-title">Year 1 / Sem 1</div>
+            </div>
+            <div
+              class="sem-column"
+              ondrop="drop(event)"
+              ondragover="allowDrop(event)"
+            >
+              <div class="sem-title">Year 1 / Sem 2</div>
+            </div>
+            <div
+              class="sem-column"
+              ondrop="drop(event)"
+              ondragover="allowDrop(event)"
+            >
+              <div class="sem-title">Year 2 / Sem 1</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="view-engine" class="app-view">
+          <div class="engine-container">
+            <div class="combination-title">
+              <select id="primary-select">
+                <option value="AI_MAJOR">AI Major</option>
+                <option value="CS_MAJOR">Computer Science</option>
+              </select>
+              <span class="plus-icon">+</span>
+              <select id="secondary-select">
+                <option value="MATH_2ND_MAJOR">2nd Major Mathematics</option>
+                <option value="BIZ_2ND_DEGREE">Double Degree Business</option>
+              </select>
+            </div>
+
+            <div class="progress-container">
+              <div
+                id="bar-primary"
+                class="bar-segment"
+                title="Primary MCs"
+              ></div>
+              <div
+                id="bar-overlap"
+                class="bar-segment"
+                title="Overlapping MCs"
+              ></div>
+              <div
+                id="bar-secondary"
+                class="bar-segment"
+                title="Secondary MCs"
+              ></div>
+            </div>
+            <div class="progress-labels">
+              <span>Primary Major</span>
+              <span id="label-overlap">Overlap</span>
+              <span>Second Degree</span>
+            </div>
+
+            <div class="stats-row">
+              <div class="stat-box">
+                <div class="stat-value" id="stat-standard">160</div>
+                <div class="stat-label">Standard MCs</div>
+              </div>
+              <div class="stat-box highlight">
+                <div class="stat-value green" id="stat-overlap">0</div>
+                <div class="stat-label">Overlap MCs</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value red" id="stat-total">160</div>
+                <div class="stat-label">Total Required</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
 
     <script src="script.js"></script>
