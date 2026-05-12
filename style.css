@@ -280,3 +280,114 @@ select#secondary-select {
   color: #64748b;
   text-transform: uppercase;
 }
+/* =========================================================
+   MOBILE RESPONSIVENESS (Add to bottom of style.css)
+   ========================================================= */
+@media (max-width: 768px) {
+  /* Change layout to put navigation at the bottom */
+  .app-layout {
+    flex-direction: column-reverse;
+  }
+
+  /* Transform Sidebar into a Bottom Nav Bar */
+  .main-sidebar {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    padding: 0;
+    border-right: none;
+    border-top: 1px solid #e2e8f0;
+    justify-content: space-around;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+  }
+
+  .brand {
+    display: none; /* Hide brand name to save space on phone */
+  }
+
+  .nav-item {
+    padding: 12px 5px;
+    font-size: 11px;
+    text-align: center;
+    flex: 1;
+    border-right: none;
+    border-top: 3px solid transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* Move active highlight to the top edge for bottom nav */
+  .nav-item.active {
+    border-right: none;
+    border-top: 3px solid #2a4dff;
+    background: #eff6ff;
+  }
+
+  /* Adjust Main Content Area */
+  .main-content {
+    padding: 15px;
+    height: calc(100vh - 60px); /* Leave room for bottom nav */
+  }
+
+  /* Stack Header Elements */
+  .view-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .view-body {
+    padding: 15px;
+  }
+
+  /* Stack Grid Columns Vertically */
+  .comparator-grid,
+  .planner-grid,
+  .stats-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .sem-column {
+    min-height: 150px; /* Make drop targets a bit smaller */
+  }
+
+  /* Adjust Degree Engine for small screens */
+  .engine-container {
+    padding: 20px 10px;
+  }
+
+  .combination-title {
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+  }
+
+  select {
+    font-size: 18px;
+    text-align: center;
+    padding-right: 0;
+  }
+
+  .progress-labels {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .stat-box {
+    padding: 15px;
+  }
+
+  .stat-value {
+    font-size: 24px;
+  }
+}
