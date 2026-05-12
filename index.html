@@ -204,4 +204,168 @@
         .stat-label { font-size: 12px; color: #94a3b8; text-transform: uppercase; }
 
     </style>
-</head
+</head>
+<body>
+
+    <div>
+        <div class="section-title">1. Curriculum Browser</div>
+        <div class="window-mockup">
+            <div class="window-header">
+                <div class="dots">
+                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                </div>
+                <div class="search-bar">🔍 Search modules...</div>
+            </div>
+            <div class="app-body">
+                <div class="sidebar">
+                    <div class="sidebar-item active">Artificial Intelligence</div>
+                    <div class="sidebar-item">Computer Science</div>
+                    <div class="sidebar-item">Information Systems</div>
+                    <div class="sidebar-item">Business Analytics</div>
+                    <div class="sidebar-item">Data Science</div>
+                </div>
+                <div class="main-content">
+                    <h2 style="margin:0 0 5px 0;">Artificial Intelligence Major</h2>
+                    <p style="color: #94a3b8; margin: 0 0 20px 0; font-size: 14px;">Total Core MCs Required: 40</p>
+                    <table>
+                        <tr>
+                            <th>Module Code</th>
+                            <th>Module Title</th>
+                            <th>Required</th>
+                            <th>MCs</th>
+                        </tr>
+                        <tr>
+                            <td>CS2030S</td>
+                            <td>Programming Methodology II</td>
+                            <td><div class="checkbox"></div></td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>CS2040S</td>
+                            <td>Data Structures and Algorithms</td>
+                            <td><div class="checkbox"></div></td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>GEA1000</td>
+                            <td>Quantitative Reasoning with Data</td>
+                            <td><div class="checkbox"></div></td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>MA1521</td>
+                            <td>Calculus for Computing</td>
+                            <td><div class="checkbox"></div></td>
+                            <td>4</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="section-title">2. Interactive Major Comparator</div>
+        <div class="window-mockup">
+            <div class="window-header">
+                <div class="dots">
+                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                </div>
+                <div class="search-bar">⚖️ Comparing 2 Majors...</div>
+            </div>
+            <div class="app-body comparator-grid">
+                <div class="comp-column">
+                    <div class="comp-header">Primary: Artificial Intelligence</div>
+                    <div class="module-tag overlap">CS2030S <span class="mc-badge">Overlaps</span></div>
+                    <div class="module-tag overlap">CS2040S <span class="mc-badge">Overlaps</span></div>
+                    <div class="module-tag">CS2109S <span class="mc-badge">Unique</span></div>
+                    <div class="module-tag">CS3243 <span class="mc-badge">Unique</span></div>
+                </div>
+                <div class="comp-column">
+                    <div class="comp-header">Second Major: Mathematics</div>
+                    <div class="module-tag overlap">CS2030S <span class="mc-badge">Overlaps</span></div>
+                    <div class="module-tag overlap">CS2040S <span class="mc-badge">Overlaps</span></div>
+                    <div class="module-tag">MA2001 <span class="mc-badge">Unique</span></div>
+                    <div class="module-tag">MA2002 <span class="mc-badge">Unique</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="section-title">3. Semester Planner</div>
+        <div class="window-mockup">
+            <div class="window-header">
+                <div class="dots">
+                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                </div>
+                <div class="search-bar">📅 Drag and drop modules...</div>
+            </div>
+            <div class="app-body planner-container">
+                <div class="semester-col">
+                    <div class="sem-title">YEAR 1 / SEM 1</div>
+                    <div class="drag-card"><strong>CS1101S</strong><br><span style="color:#94a3b8">Programming Methodology</span></div>
+                    <div class="drag-card"><strong>MA1521</strong><br><span style="color:#94a3b8">Calculus for Computing</span></div>
+                    <div class="drag-card"><strong>IS1108</strong><br><span style="color:#94a3b8">Digital Ethics</span></div>
+                </div>
+                <div class="semester-col">
+                    <div class="sem-title">YEAR 1 / SEM 2</div>
+                    <div class="drag-card" style="border-left-color: #2a4dff;"><strong>CS2030S</strong><br><span style="color:#94a3b8">Programming Methodology II</span></div>
+                    <div class="drag-card" style="border-left-color: #2a4dff;"><strong>CS2040S</strong><br><span style="color:#94a3b8">Data Structures</span></div>
+                    <div class="drag-card" style="border-left-color: #27c93f;"><strong>GEA1000</strong><br><span style="color:#94a3b8">Quantitative Reasoning</span></div>
+                </div>
+                <div class="semester-col">
+                    <div class="sem-title">YEAR 2 / SEM 1</div>
+                    <div class="drag-card" style="border-style: dashed; border-color: #64748b; background: transparent;"><em>Drop module here...</em></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="section-title">4. Degree Combination Engine</div>
+        <div class="window-mockup">
+            <div class="window-header">
+                <div class="dots">
+                    <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                </div>
+                <div class="search-bar">⚙️ Calculating Overlap...</div>
+            </div>
+            <div class="app-body engine-container">
+                <div class="combination-title">
+                    <span style="color: #2a4dff;">AI Major</span>
+                    <span class="plus-icon">+</span>
+                    <span style="color: #90b0ff;">Double Degree in Business</span>
+                </div>
+                
+                <div style="width: 100%; height: 20px; background: #1f2545; border-radius: 10px; overflow: hidden; display: flex;">
+                    <div style="width: 60%; background: #2a4dff;" title="AI Major MCs"></div>
+                    <div style="width: 15%; background: #27c93f;" title="Overlapping MCs"></div>
+                    <div style="width: 25%; background: #ffbd2e;" title="Business MCs"></div>
+                </div>
+                <div style="display: flex; width: 100%; justify-content: space-between; margin-top: 10px; font-size: 12px; color: #94a3b8;">
+                    <span>Primary Major</span>
+                    <span>Overlap</span>
+                    <span>Second Degree</span>
+                </div>
+
+                <div class="stats-row">
+                    <div class="stat-box">
+                        <div class="stat-value">160</div>
+                        <div class="stat-label">Standard Graduation MCs</div>
+                    </div>
+                    <div class="stat-box" style="border-color: #27c93f;">
+                        <div class="stat-value green">24</div>
+                        <div class="stat-label">Overlapping MCs Detected</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value red">184</div>
+                        <div class="stat-label">New Total MCs Required</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
