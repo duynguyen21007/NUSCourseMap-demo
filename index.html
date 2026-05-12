@@ -1,207 +1,72 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ContiNUS - App Mockups for Poster</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ContiNUS - Working Demo</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="window-mockup">
+      <div class="window-header">
+        <div class="dots">
+          <div class="dot red"></div>
+          <div class="dot yellow"></div>
+          <div class="dot green"></div>
+        </div>
+        <div class="search-bar">⚙️ Calculating Overlap...</div>
+      </div>
 
-        /* FIX: Added box-sizing to prevent padding from breaking widths */
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
+      <div class="engine-container">
+        <div class="combination-title">
+          <select id="primary-select">
+            <option value="AI_MAJOR">AI Major</option>
+            <option value="CS_MAJOR">Computer Science Major</option>
+          </select>
+          <span class="plus-icon">+</span>
+          <select id="secondary-select">
+            <option value="MATH_2ND_MAJOR">Second Major in Mathematics</option>
+            <option value="BIZ_2ND_DEGREE">Double Degree in Business</option>
+            <option value="DATA_MINOR">Minor in Data Engineering</option>
+          </select>
+        </div>
 
-        body {
-            background-color: #050814; 
-            color: #ffffff;
-            font-family: 'Inter', sans-serif;
-            padding: 50px;
-            display: flex;
-            flex-direction: column;
-            gap: 80px;
-            align-items: center;
-        }
+        <div class="progress-container">
+          <div id="bar-primary" class="bar-segment" title="Primary MCs"></div>
+          <div
+            id="bar-overlap"
+            class="bar-segment"
+            title="Overlapping MCs"
+          ></div>
+          <div
+            id="bar-secondary"
+            class="bar-segment"
+            title="Secondary MCs"
+          ></div>
+        </div>
+        <div class="progress-labels">
+          <span>Primary Major</span>
+          <span id="label-overlap">Overlap (0 MCs)</span>
+          <span>Second Degree / Minor</span>
+        </div>
 
-        .section-title {
-            text-align: center;
-            color: #90b0ff;
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="stat-value" id="stat-standard">160</div>
+            <div class="stat-label">Standard Graduation MCs</div>
+          </div>
+          <div class="stat-box highlight">
+            <div class="stat-value green" id="stat-overlap">0</div>
+            <div class="stat-label">Overlapping MCs Detected</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value red" id="stat-total">160</div>
+            <div class="stat-label">New Total MCs Required</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        .window-mockup {
-            width: 800px;
-            background: #11142b;
-            border-radius: 12px;
-            border: 1px solid #2a4dff;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(42, 77, 255, 0.2);
-            overflow: hidden;
-        }
-
-        .window-header {
-            background: #0a0c1a;
-            padding: 12px 16px;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #1f2545;
-        }
-
-        .dots {
-            display: flex;
-            gap: 8px;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-        .dot.red { background: #ff5f56; }
-        .dot.yellow { background: #ffbd2e; }
-        .dot.green { background: #27c93f; }
-
-        .search-bar {
-            margin: 0 auto;
-            background: #1f2545;
-            border-radius: 6px;
-            padding: 4px 120px 4px 12px;
-            font-size: 12px;
-            color: #64748b;
-            display: flex;
-            align-items: center;
-        }
-
-        .app-body {
-            padding: 0;
-            display: flex;
-            height: 400px;
-            width: 100%;
-        }
-
-        /* --- 1. Curriculum Browser Styles --- */
-        .sidebar {
-            width: 220px;
-            background: #0d1024;
-            border-right: 1px solid #1f2545;
-            padding: 20px 0;
-            flex-shrink: 0;
-        }
-        .sidebar-item {
-            padding: 12px 20px;
-            font-size: 14px;
-            color: #94a3b8;
-            cursor: pointer;
-        }
-        .sidebar-item.active {
-            background: rgba(42, 77, 255, 0.2);
-            color: #ffffff;
-            border-left: 3px solid #2a4dff;
-            font-weight: 600;
-        }
-        .main-content {
-            flex: 1;
-            padding: 30px;
-            background: #11142b;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            text-align: left;
-            padding: 12px;
-            border-bottom: 1px solid #1f2545;
-            font-size: 14px;
-        }
-        th { color: #94a3b8; font-weight: 600; }
-        .checkbox { width: 16px; height: 16px; background: #2a4dff; border-radius: 4px; display: inline-block; }
-        .checkbox.empty { background: transparent; border: 1px solid #64748b; }
-
-        /* --- 2. Interactive Major Comparator Styles --- */
-        .comparator-grid {
-            display: flex;
-            width: 100%;
-            height: 100%;
-        }
-        .comp-column {
-            flex: 1;
-            padding: 30px;
-            border-right: 1px solid #1f2545;
-        }
-        .comp-column:last-child { border-right: none; }
-        .comp-header { font-size: 18px; font-weight: 700; margin-bottom: 20px; color: #fff; }
-        .module-tag {
-            background: #1e2445;
-            border-left: 3px solid #2a4dff;
-            padding: 10px 15px;
-            border-radius: 4px;
-            margin-bottom: 10px;
-            font-size: 14px;
-            display: flex;
-            justify-content: space-between;
-        }
-        .module-tag.overlap { border-left-color: #27c93f; background: rgba(39, 201, 63, 0.1); }
-        .mc-badge { background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; font-size: 12px;}
-
-        /* --- 3. Semester Planner Styles --- */
-        .planner-container {
-            padding: 30px;
-            display: flex;
-            gap: 20px;
-            width: 100%;
-            overflow-x: hidden;
-        }
-        .semester-col {
-            background: #0d1024;
-            border-radius: 8px;
-            flex: 1;
-            padding: 15px;
-            border: 1px dashed #2a4dff;
-        }
-        .sem-title { font-size: 14px; color: #94a3b8; margin-bottom: 15px; font-weight: 600; text-align: center;}
-        .drag-card {
-            background: #1f2545;
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 10px;
-            font-size: 13px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-            border-left: 3px solid #ffbd2e;
-        }
-
-        /* --- 4. Degree Combination Engine Styles --- */
-        .engine-container {
-            padding: 40px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .combination-title { font-size: 24px; font-weight: 700; margin-bottom: 30px; }
-        .plus-icon { color: #64748b; margin: 0 15px; }
-        .stats-row {
-            display: flex;
-            gap: 30px;
-            width: 100%;
-            margin-top: 20px;
-        }
-        .stat-box {
-            flex: 1;
-            background: #1e2445;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            border: 1px solid #1f2545;
-        }
-        .stat-value { font-size: 32px; font-weight: 700; color: #2a4dff; margin-bottom: 5px; }
-        .stat-value.green { color: #27c93f; }
-        .stat-value.red { color: #ff5f56; }
-        .stat-label { font-size: 12px; color: #94a3b8; text-transform: uppercase; }
-
-    </style>
-</head
+    <script src="script.js"></script>
+  </body>
+</html>
