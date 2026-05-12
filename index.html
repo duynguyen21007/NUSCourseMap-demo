@@ -3,601 +3,508 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NUSCoursemap - Updated Layout</title>
+    <title>ContiNUS - App Mockups for Poster</title>
     <style>
-      :root {
-        --primary-color: #ef7c00;
-        --secondary-color: #003d7c;
-        --bg-color: #f4f7f6;
-        --surface-color: #ffffff;
-        --text-main: #333333;
-        --text-light: #666666;
-        --border-radius: 8px;
-        --error-color: #d32f2f;
-        --error-bg: #ffebee;
-      }
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
 
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        font-family:
-          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial,
-          sans-serif;
-      }
       body {
-        background-color: var(--bg-color);
-        color: var(--text-main);
+        background-color: #050814; /* Deep dark blue to match poster background */
+        color: #ffffff;
+        font-family: "Inter", sans-serif;
+        padding: 50px;
         display: flex;
         flex-direction: column;
-        height: 100vh;
+        gap: 80px;
+        align-items: center;
+      }
+
+      .section-title {
+        text-align: center;
+        color: #90b0ff;
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      /* macOS Window Mockup Container */
+      .window-mockup {
+        width: 800px;
+        background: #11142b;
+        border-radius: 12px;
+        border: 1px solid #2a4dff;
+        box-shadow:
+          0 20px 50px rgba(0, 0, 0, 0.5),
+          0 0 20px rgba(42, 77, 255, 0.2);
         overflow: hidden;
       }
 
-      /* Header */
-      header {
-        background-color: var(--secondary-color);
-        color: white;
-        padding: 1rem 2rem;
+      .window-header {
+        background: #0a0c1a;
+        padding: 12px 16px;
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        z-index: 20;
+        border-bottom: 1px solid #1f2545;
       }
-      header h1 {
-        font-size: 1.5rem;
+
+      .dots {
+        display: flex;
+        gap: 8px;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+      .dot.red {
+        background: #ff5f56;
+      }
+      .dot.yellow {
+        background: #ffbd2e;
+      }
+      .dot.green {
+        background: #27c93f;
+      }
+
+      .search-bar {
+        margin: 0 auto;
+        background: #1f2545;
+        border-radius: 6px;
+        padding: 4px 120px 4px 12px;
+        font-size: 12px;
+        color: #64748b;
+        display: flex;
+        align-items: center;
+      }
+
+      .app-body {
+        padding: 0;
+        display: flex;
+        height: 400px;
+      }
+
+      /* --- 1. Curriculum Browser Styles --- */
+      .sidebar {
+        width: 220px;
+        background: #0d1024;
+        border-right: 1px solid #1f2545;
+        padding: 20px 0;
+      }
+      .sidebar-item {
+        padding: 12px 20px;
+        font-size: 14px;
+        color: #94a3b8;
+        cursor: pointer;
+      }
+      .sidebar-item.active {
+        background: rgba(42, 77, 255, 0.2);
+        color: #ffffff;
+        border-left: 3px solid #2a4dff;
         font-weight: 600;
       }
-      .user-profile {
-        font-weight: 500;
-        background: rgba(255, 255, 255, 0.1);
-        padding: 0.5rem 1rem;
-        border-radius: var(--border-radius);
-      }
-
-      /* Top Bar - Programme Browser */
-      .programme-browser {
-        background-color: var(--surface-color);
-        padding: 1rem 2rem;
-        border-bottom: 1px solid #e0e0e0;
-        z-index: 10;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-      .browser-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .browser-header h2 {
-        font-size: 1.2rem;
-        color: var(--secondary-color);
-      }
-      .search-bar {
-        width: 300px;
-        padding: 0.5rem 0.75rem;
-        border: 1px solid #ccc;
-        border-radius: var(--border-radius);
-        outline: none;
-      }
-      .search-bar:focus {
-        border-color: var(--primary-color);
-      }
-
-      .major-list-horizontal {
-        display: flex;
-        gap: 1rem;
-        overflow-x: auto;
-        padding-bottom: 0.5rem;
-      }
-      /* Custom Scrollbar for horizontal list */
-      .major-list-horizontal::-webkit-scrollbar {
-        height: 6px;
-      }
-      .major-list-horizontal::-webkit-scrollbar-thumb {
-        background: #ccc;
-        border-radius: 4px;
-      }
-
-      .major-item {
-        min-width: 220px;
-        flex-shrink: 0;
-        padding: 1rem;
-        border: 1px solid #eee;
-        border-radius: var(--border-radius);
-        cursor: pointer;
-        transition: all 0.2s ease;
-      }
-      .major-item:hover,
-      .major-item.active {
-        border-color: var(--primary-color);
-        background-color: #fff8f0;
-      }
-      .major-item h3 {
-        font-size: 1rem;
-        margin-bottom: 0.25rem;
-      }
-      .major-item p {
-        font-size: 0.85rem;
-        color: var(--text-light);
-      }
-
-      /* Main Layout */
-      .container {
-        display: flex;
-        flex: 1;
-        overflow: hidden;
-      }
-
-      /* Left Sidebar - Module Bank */
-      .module-bank-sidebar {
-        width: 320px;
-        background-color: var(--surface-color);
-        border-right: 1px solid #e0e0e0;
-        display: flex;
-        flex-direction: column;
-        padding: 1.5rem;
-        overflow-y: auto;
-      }
-      .module-bank-sidebar h3 {
-        font-size: 1.2rem;
-        margin-bottom: 0.25rem;
-        color: var(--secondary-color);
-      }
-      .module-bank-sidebar p {
-        font-size: 0.85rem;
-        color: var(--text-light);
-        margin-bottom: 1.5rem;
-      }
-
-      .module-bank-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        flex: 1;
-        list-style: none;
-        min-height: 100px;
-      }
-
-      /* Right Content - Semester Planner */
       .main-content {
         flex: 1;
-        padding: 2rem;
-        overflow-y: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        background-color: var(--bg-color);
+        padding: 30px;
+        background: #11142b;
       }
-      .planner-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      /* Semester Grid */
-      .semester-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 1.5rem;
-        align-items: start;
-      }
-      .semester-card {
-        background: var(--surface-color);
-        border-radius: var(--border-radius);
-        padding: 1.5rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        display: flex;
-        flex-direction: column;
-        transition: background-color 0.2s;
-        min-height: 200px;
-      }
-      .semester-card h3 {
-        font-size: 1.1rem;
-        margin-bottom: 1rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 2px solid #f0f0f0;
-        pointer-events: none;
-      }
-      .module-list {
-        list-style: none;
-        flex: 1;
-        min-height: 100px;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      /* Draggable Modules */
-      .module-item {
-        background: var(--surface-color);
-        padding: 0.75rem 1rem;
-        border-radius: 6px;
-        font-size: 0.9rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        border: 1px solid #e0e0e0;
-        border-left: 4px solid var(--secondary-color);
-        cursor: grab;
-        user-select: none;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        transition: all 0.2s;
-      }
-      .module-item:active {
-        cursor: grabbing;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transform: translateY(-2px);
-      }
-      .module-item.core {
-        border-left-color: var(--primary-color);
-      }
-      .module-code {
-        font-weight: bold;
-        pointer-events: none;
-      }
-      .module-name {
-        font-size: 0.8rem;
-        color: var(--text-light);
-        pointer-events: none;
-        margin-left: auto;
-        text-align: right;
-        max-width: 60%;
-      }
-
-      /* Drag States */
-      .dragging {
-        opacity: 0.4;
-        border: 2px dashed var(--secondary-color);
-      }
-      .drag-over {
-        background-color: #e8f4fd;
-        border-color: var(--secondary-color);
-        border-style: dashed;
-      }
-
-      /* Prerequisite Error States */
-      .prereq-error {
-        border-left-color: var(--error-color) !important;
-        background-color: var(--error-bg);
-        animation: shake 0.4s ease-in-out;
-      }
-      .error-msg {
+      table {
         width: 100%;
-        font-size: 0.75rem;
-        color: var(--error-color);
-        margin-top: 8px;
-        font-weight: bold;
-        pointer-events: none;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 12px;
+        border-bottom: 1px solid #1f2545;
+        font-size: 14px;
+      }
+      th {
+        color: #94a3b8;
+        font-weight: 600;
+      }
+      .checkbox {
+        width: 16px;
+        height: 16px;
+        background: #2a4dff;
+        border-radius: 4px;
+        display: inline-block;
+      }
+      .checkbox.empty {
+        background: transparent;
+        border: 1px solid #64748b;
       }
 
-      @keyframes shake {
-        0%,
-        100% {
-          transform: translateX(0);
-        }
-        25% {
-          transform: translateX(-4px);
-        }
-        75% {
-          transform: translateX(4px);
-        }
+      /* --- 2. Interactive Major Comparator Styles --- */
+      .comparator-grid {
+        display: flex;
+        width: 100%;
+        height: 100%;
+      }
+      .comp-column {
+        flex: 1;
+        padding: 30px;
+        border-right: 1px solid #1f2545;
+      }
+      .comp-column:last-child {
+        border-right: none;
+      }
+      .comp-header {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #fff;
+      }
+      .module-tag {
+        background: #1e2445;
+        border-left: 3px solid #2a4dff;
+        padding: 10px 15px;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .module-tag.overlap {
+        border-left-color: #27c93f;
+        background: rgba(39, 201, 63, 0.1);
+      }
+      .mc-badge {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 12px;
+      }
+
+      /* --- 3. Semester Planner Styles --- */
+      .planner-container {
+        padding: 30px;
+        display: flex;
+        gap: 20px;
+        width: 100%;
+        overflow-x: hidden;
+      }
+      .semester-col {
+        background: #0d1024;
+        border-radius: 8px;
+        flex: 1;
+        padding: 15px;
+        border: 1px dashed #2a4dff;
+      }
+      .sem-title {
+        font-size: 14px;
+        color: #94a3b8;
+        margin-bottom: 15px;
+        font-weight: 600;
+        text-align: center;
+      }
+      .drag-card {
+        background: #1f2545;
+        padding: 12px;
+        border-radius: 6px;
+        margin-bottom: 10px;
+        font-size: 13px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        border-left: 3px solid #ffbd2e;
+      }
+
+      /* --- 4. Degree Combination Engine Styles --- */
+      .engine-container {
+        padding: 40px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .combination-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 30px;
+      }
+      .plus-icon {
+        color: #64748b;
+        margin: 0 15px;
+      }
+      .stats-row {
+        display: flex;
+        gap: 30px;
+        width: 100%;
+        margin-top: 20px;
+      }
+      .stat-box {
+        flex: 1;
+        background: #1e2445;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        border: 1px solid #1f2545;
+      }
+      .stat-value {
+        font-size: 32px;
+        font-weight: 700;
+        color: #2a4dff;
+        margin-bottom: 5px;
+      }
+      .stat-value.green {
+        color: #27c93f;
+      }
+      .stat-value.red {
+        color: #ff5f56;
+      }
+      .stat-label {
+        font-size: 12px;
+        color: #94a3b8;
+        text-transform: uppercase;
       }
     </style>
   </head>
   <body>
-    <header>
-      <h1>NUSCoursemap</h1>
-      <div class="user-profile">Hello, Duy</div>
-    </header>
-
-    <section class="programme-browser">
-      <div class="browser-header">
-        <h2>Browse Programmes</h2>
-        <input
-          type="text"
-          class="search-bar"
-          id="searchInput"
-          placeholder="Search majors (e.g., Computer Science)..."
-        />
-      </div>
-      <div id="majorList" class="major-list-horizontal"></div>
-    </section>
-
-    <div class="container">
-      <aside
-        class="module-bank-sidebar"
-        id="moduleBank"
-        ondragover="handleDragOver(event)"
-        ondragleave="handleDragLeave(event)"
-        ondrop="handleDrop(event)"
-      >
-        <h3>Module Bank</h3>
-        <p>Unassigned modules. Drag to the right to plan your semesters.</p>
-        <ul class="module-bank-list module-list" id="unassignedList"></ul>
-      </aside>
-
-      <main class="main-content">
-        <div class="planner-header">
-          <div>
-            <h2 id="currentMajorTitle">Select a Major</h2>
+    <div>
+      <div class="section-title">1. Curriculum Browser</div>
+      <div class="window-mockup">
+        <div class="window-header">
+          <div class="dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+          </div>
+          <div class="search-bar">🔍 Search modules...</div>
+        </div>
+        <div class="app-body">
+          <div class="sidebar">
+            <div class="sidebar-item active">Artificial Intelligence</div>
+            <div class="sidebar-item">Computer Science</div>
+            <div class="sidebar-item">Information Systems</div>
+            <div class="sidebar-item">Business Analytics</div>
+            <div class="sidebar-item">Data Science</div>
+          </div>
+          <div class="main-content">
+            <h2 style="margin: 0 0 5px 0">Artificial Intelligence Major</h2>
+            <p style="color: #94a3b8; margin: 0 0 20px 0; font-size: 14px">
+              Total Core MCs Required: 40
+            </p>
+            <table>
+              <tr>
+                <th>Module Code</th>
+                <th>Module Title</th>
+                <th>Required</th>
+                <th>MCs</th>
+              </tr>
+              <tr>
+                <td>CS2030S</td>
+                <td>Programming Methodology II</td>
+                <td><div class="checkbox"></div></td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>CS2040S</td>
+                <td>Data Structures and Algorithms</td>
+                <td><div class="checkbox"></div></td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>GEA1000</td>
+                <td>Quantitative Reasoning with Data</td>
+                <td><div class="checkbox"></div></td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>MA1521</td>
+                <td>Calculus for Computing</td>
+                <td><div class="checkbox"></div></td>
+                <td>4</td>
+              </tr>
+            </table>
           </div>
         </div>
-
-        <div class="semester-grid" id="semesterGrid"></div>
-      </main>
+      </div>
     </div>
 
-    <script>
-      // 1. Prerequisite Logic Dictionary
-      const modulePrerequisites = {
-        CS2030S: ["CS1101S"],
-        CS2040S: ["CS1101S", "CS1231S"],
-        ST2334: ["MA1521"],
-      };
+    <div>
+      <div class="section-title">2. Interactive Major Comparator</div>
+      <div class="window-mockup">
+        <div class="window-header">
+          <div class="dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+          </div>
+          <div class="search-bar">⚖️ Comparing 2 Majors...</div>
+        </div>
+        <div class="app-body comparator-grid">
+          <div class="comp-column">
+            <div class="comp-header">Primary: Artificial Intelligence</div>
+            <div class="module-tag overlap">
+              CS2030S <span class="mc-badge">Overlaps</span>
+            </div>
+            <div class="module-tag overlap">
+              CS2040S <span class="mc-badge">Overlaps</span>
+            </div>
+            <div class="module-tag">
+              CS2109S <span class="mc-badge">Unique</span>
+            </div>
+            <div class="module-tag">
+              CS3243 <span class="mc-badge">Unique</span>
+            </div>
+          </div>
+          <div class="comp-column">
+            <div class="comp-header">Second Major: Mathematics</div>
+            <div class="module-tag overlap">
+              CS2030S <span class="mc-badge">Overlaps</span>
+            </div>
+            <div class="module-tag overlap">
+              CS2040S <span class="mc-badge">Overlaps</span>
+            </div>
+            <div class="module-tag">
+              MA2001 <span class="mc-badge">Unique</span>
+            </div>
+            <div class="module-tag">
+              MA2002 <span class="mc-badge">Unique</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      const semesterOrder = ["y1s1", "y1s2", "y2s1", "y2s2"];
+    <div>
+      <div class="section-title">3. Semester Planner</div>
+      <div class="window-mockup">
+        <div class="window-header">
+          <div class="dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+          </div>
+          <div class="search-bar">📅 Drag and drop modules...</div>
+        </div>
+        <div class="app-body planner-container">
+          <div class="semester-col">
+            <div class="sem-title">YEAR 1 / SEM 1</div>
+            <div class="drag-card">
+              <strong>CS1101S</strong><br /><span style="color: #94a3b8"
+                >Programming Methodology</span
+              >
+            </div>
+            <div class="drag-card">
+              <strong>MA1521</strong><br /><span style="color: #94a3b8"
+                >Calculus for Computing</span
+              >
+            </div>
+            <div class="drag-card">
+              <strong>IS1108</strong><br /><span style="color: #94a3b8"
+                >Digital Ethics</span
+              >
+            </div>
+          </div>
+          <div class="semester-col">
+            <div class="sem-title">YEAR 1 / SEM 2</div>
+            <div class="drag-card" style="border-left-color: #2a4dff">
+              <strong>CS2030S</strong><br /><span style="color: #94a3b8"
+                >Programming Methodology II</span
+              >
+            </div>
+            <div class="drag-card" style="border-left-color: #2a4dff">
+              <strong>CS2040S</strong><br /><span style="color: #94a3b8"
+                >Data Structures</span
+              >
+            </div>
+            <div class="drag-card" style="border-left-color: #27c93f">
+              <strong>GEA1000</strong><br /><span style="color: #94a3b8"
+                >Quantitative Reasoning</span
+              >
+            </div>
+          </div>
+          <div class="semester-col">
+            <div class="sem-title">YEAR 2 / SEM 1</div>
+            <div
+              class="drag-card"
+              style="
+                border-style: dashed;
+                border-color: #64748b;
+                background: transparent;
+              "
+            >
+              <em>Drop module here...</em>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      const database = {
-        majors: [
-          {
-            id: "cs",
-            name: "Computer Science",
-            faculty: "School of Computing",
-            mcs: 160,
-            unassigned: [
-              {
-                code: "CS2030S",
-                name: "Programming Methodology II",
-                type: "core",
-              },
-              {
-                code: "CS2040S",
-                name: "Data Structures & Algorithms",
-                type: "core",
-              },
-              { code: "MA1522", name: "Linear Algebra", type: "core" },
-              {
-                code: "ST2334",
-                name: "Probability and Statistics",
-                type: "core",
-              },
-              {
-                code: "GEA1000",
-                name: "Quantitative Reasoning",
-                type: "general",
-              },
-              { code: "CS1231S", name: "Discrete Structures", type: "core" },
-              {
-                code: "ES1103",
-                name: "English for Academic Purposes",
-                type: "general",
-              },
-              { code: "LAC1201", name: "Chinese 1", type: "general" },
-              { code: "EG1311", name: "Design and Make", type: "general" },
-            ],
-            semesters: [
-              {
-                id: "y1s1",
-                title: "Year 1, Semester 1",
-                modules: [
-                  {
-                    code: "CS1101S",
-                    name: "Programming Methodology",
-                    type: "core",
-                  },
-                  {
-                    code: "MA1521",
-                    name: "Calculus for Computing",
-                    type: "core",
-                  },
-                  { code: "IS1108", name: "Digital Ethics", type: "general" },
-                ],
-              },
-              { id: "y1s2", title: "Year 1, Semester 2", modules: [] },
-              { id: "y2s1", title: "Year 2, Semester 1", modules: [] },
-              { id: "y2s2", title: "Year 2, Semester 2", modules: [] },
-            ],
-          },
-          {
-            id: "qf",
-            name: "Quantitative Finance",
-            faculty: "Faculty of Science",
-            mcs: 160,
-            unassigned: [
-              { code: "MA2002", name: "Calculus", type: "core" },
-              { code: "ST2131", name: "Probability", type: "core" },
-            ],
-            semesters: [
-              {
-                id: "y1s1",
-                title: "Year 1, Semester 1",
-                modules: [{ code: "MA1102R", name: "Calculus", type: "core" }],
-              },
-              { id: "y1s2", title: "Year 1, Semester 2", modules: [] },
-            ],
-          },
-          {
-            id: "bba",
-            name: "Business Administration",
-            faculty: "Business School",
-            mcs: 160,
-            unassigned: [
-              {
-                code: "ACC1701",
-                name: "Accounting for Decision Makers",
-                type: "core",
-              },
-            ],
-            semesters: [
-              {
-                id: "y1s1",
-                title: "Year 1, Semester 1",
-                modules: [
-                  {
-                    code: "MKT1705",
-                    name: "Principles of Marketing",
-                    type: "core",
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      };
+    <div>
+      <div class="section-title">4. Degree Combination Engine</div>
+      <div class="window-mockup">
+        <div class="window-header">
+          <div class="dots">
+            <div class="dot red"></div>
+            <div class="dot yellow"></div>
+            <div class="dot green"></div>
+          </div>
+          <div class="search-bar">⚙️ Calculating Overlap...</div>
+        </div>
+        <div class="app-body engine-container">
+          <div class="combination-title">
+            <span style="color: #2a4dff">AI Major</span>
+            <span class="plus-icon">+</span>
+            <span style="color: #90b0ff">Double Degree in Business</span>
+          </div>
 
-      const majorListEl = document.getElementById("majorList");
-      const semesterGridEl = document.getElementById("semesterGrid");
-      const currentMajorTitle = document.getElementById("currentMajorTitle");
-      const searchInput = document.getElementById("searchInput");
-      const unassignedListEl = document.getElementById("unassignedList");
+          <div
+            style="
+              width: 100%;
+              height: 20px;
+              background: #1f2545;
+              border-radius: 10px;
+              overflow: hidden;
+              display: flex;
+            "
+          >
+            <div
+              style="width: 60%; background: #2a4dff"
+              title="AI Major MCs"
+            ></div>
+            <div
+              style="width: 15%; background: #27c93f"
+              title="Overlapping MCs"
+            ></div>
+            <div
+              style="width: 25%; background: #ffbd2e"
+              title="Business MCs"
+            ></div>
+          </div>
+          <div
+            style="
+              display: flex;
+              width: 100%;
+              justify-content: space-between;
+              margin-top: 10px;
+              font-size: 12px;
+              color: #94a3b8;
+            "
+          >
+            <span>Primary Major</span>
+            <span>Overlap</span>
+            <span>Second Degree</span>
+          </div>
 
-      function renderMajors(filterText = "") {
-        majorListEl.innerHTML = "";
-        database.majors
-          .filter((m) =>
-            m.name.toLowerCase().includes(filterText.toLowerCase()),
-          )
-          .forEach((major) => {
-            const div = document.createElement("div");
-            div.className = "major-item";
-            div.innerHTML = `<h3>${major.name}</h3><p>${major.faculty} • ${major.mcs} MCs</p>`;
-            div.onclick = (e) => loadMajorPlan(major, e.currentTarget);
-            majorListEl.appendChild(div);
-          });
-      }
-
-      function createModuleElement(mod) {
-        const li = document.createElement("li");
-        li.className = `module-item ${mod.type}`;
-        li.id = `mod-${mod.code}`;
-        li.draggable = true;
-        li.innerHTML = `
-                <span class="module-code">${mod.code}</span>
-                <span class="module-name">${mod.name}</span>
-            `;
-        li.addEventListener("dragstart", handleDragStart);
-        li.addEventListener("dragend", handleDragEnd);
-        return li;
-      }
-
-      function loadMajorPlan(major, elementTarget) {
-        if (elementTarget) {
-          document
-            .querySelectorAll(".major-item")
-            .forEach((el) => el.classList.remove("active"));
-          elementTarget.classList.add("active");
-        }
-        currentMajorTitle.textContent = `${major.name} Roadmap`;
-        semesterGridEl.innerHTML = "";
-        unassignedListEl.innerHTML = "";
-
-        major.unassigned.forEach((mod) =>
-          unassignedListEl.appendChild(createModuleElement(mod)),
-        );
-
-        major.semesters.forEach((sem) => {
-          const semCard = document.createElement("div");
-          semCard.className = "semester-card";
-          semCard.id = sem.id;
-
-          semCard.addEventListener("dragover", handleDragOver);
-          semCard.addEventListener("dragleave", handleDragLeave);
-          semCard.addEventListener("drop", handleDrop);
-
-          semCard.innerHTML = `<h3>${sem.title}</h3>`;
-          const ul = document.createElement("ul");
-          ul.className = "module-list";
-          sem.modules.forEach((mod) =>
-            ul.appendChild(createModuleElement(mod)),
-          );
-
-          semCard.appendChild(ul);
-          semesterGridEl.appendChild(semCard);
-        });
-      }
-
-      let draggedElement = null;
-
-      function handleDragStart(e) {
-        draggedElement = e.target;
-        e.dataTransfer.effectAllowed = "move";
-        e.dataTransfer.setData("text/plain", e.target.id);
-        setTimeout(() => e.target.classList.add("dragging"), 0);
-      }
-
-      function handleDragEnd(e) {
-        e.target.classList.remove("dragging");
-        draggedElement = null;
-      }
-
-      function handleDragOver(e) {
-        e.preventDefault();
-        e.currentTarget.classList.add("drag-over");
-      }
-
-      function handleDragLeave(e) {
-        e.currentTarget.classList.remove("drag-over");
-      }
-
-      function handleDrop(e) {
-        e.preventDefault();
-        const dropZone = e.currentTarget;
-        dropZone.classList.remove("drag-over");
-
-        const id = e.dataTransfer.getData("text/plain");
-        const elementToMove = document.getElementById(id);
-
-        if (!elementToMove) return;
-
-        const moduleCode =
-          elementToMove.querySelector(".module-code").textContent;
-        const targetList = dropZone.querySelector(".module-list") || dropZone;
-
-        elementToMove.classList.remove("prereq-error");
-        const existingErrorMsg = elementToMove.querySelector(".error-msg");
-        if (existingErrorMsg) existingErrorMsg.remove();
-
-        const targetSemesterId = dropZone.id;
-        const targetSemIndex = semesterOrder.indexOf(targetSemesterId);
-
-        if (targetSemIndex !== -1 && modulePrerequisites[moduleCode]) {
-          let clearedModules = [];
-          for (let i = 0; i < targetSemIndex; i++) {
-            const pastSem = document.getElementById(semesterOrder[i]);
-            if (pastSem) {
-              const modsInPastSem = Array.from(
-                pastSem.querySelectorAll(".module-code"),
-              ).map((el) => el.textContent);
-              clearedModules = clearedModules.concat(modsInPastSem);
-            }
-          }
-
-          const missingPrereqs = modulePrerequisites[moduleCode].filter(
-            (prereq) => !clearedModules.includes(prereq),
-          );
-
-          if (missingPrereqs.length > 0) {
-            elementToMove.classList.add("prereq-error");
-            const errorSpan = document.createElement("span");
-            errorSpan.className = "error-msg";
-            errorSpan.innerHTML = `⚠️ Missing Prereq: ${missingPrereqs.join(", ")}`;
-            elementToMove.appendChild(errorSpan);
-          }
-        }
-
-        targetList.appendChild(elementToMove);
-      }
-
-      // Initialize App
-      renderMajors();
-      if (database.majors.length > 0) {
-        loadMajorPlan(database.majors[0], majorListEl.firstChild);
-        majorListEl.firstChild.classList.add("active");
-      }
-    </script>
+          <div class="stats-row">
+            <div class="stat-box">
+              <div class="stat-value">160</div>
+              <div class="stat-label">Standard Graduation MCs</div>
+            </div>
+            <div class="stat-box" style="border-color: #27c93f">
+              <div class="stat-value green">24</div>
+              <div class="stat-label">Overlapping MCs Detected</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value red">184</div>
+              <div class="stat-label">New Total MCs Required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
