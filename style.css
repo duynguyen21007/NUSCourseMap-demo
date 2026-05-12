@@ -350,14 +350,22 @@ select#secondary-select {
 
   /* Stack Grid Columns Vertically */
   .comparator-grid,
-  .planner-grid,
   .stats-row {
     flex-direction: column;
     gap: 15px;
   }
 
+  .planner-grid {
+    flex-direction: column;
+    gap: 15px;
+    height: auto; /* Let the grid expand beyond the screen height */
+  }
+
   .sem-column {
-    min-height: 150px; /* Make drop targets a bit smaller */
+    flex: none; /* Stop forcing columns to be equal size */
+    min-height: 150px;
+    height: auto; /* Allow the dashed box to stretch down when cards are added */
+    margin-bottom: 10px;
   }
 
   /* Adjust Degree Engine for small screens */
