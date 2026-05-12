@@ -13,7 +13,10 @@
         }
 
         body {
-            background-color: #050814; 
+            /* A cool dot-grid background so you can clearly see the drop shadows in your browser */
+            background-color: #1e293b; 
+            background-image: radial-gradient(#334155 1px, transparent 1px);
+            background-size: 20px 20px;
             color: #ffffff;
             font-family: 'Inter', sans-serif;
             padding: 50px;
@@ -34,10 +37,13 @@
 
         .window-mockup {
             width: 800px;
-            background: #11142b;
+            /* Slightly lighter base so it pops off a pure dark poster */
+            background: #151932; 
             border-radius: 12px;
-            border: 1px solid #2a4dff;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(42, 77, 255, 0.2);
+            /* A crisper, semi-transparent border for clean separation */
+            border: 1px solid rgba(144, 176, 255, 0.4); 
+            /* Swapped the dark shadow for a neon/glassmorphic blue glow */
+            box-shadow: 0 0 40px rgba(42, 77, 255, 0.3), 0 10px 30px rgba(0, 0, 0, 0.4);
             overflow: hidden;
         }
 
