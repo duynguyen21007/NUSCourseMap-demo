@@ -3,21 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ContiNUS - App Mockups for Poster</title>
+    <title>ContiNUS - App Mockups for Poster (Light Theme)</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-        /* FIX: Added box-sizing to prevent padding from breaking widths */
         *, *::before, *::after {
             box-sizing: border-box;
         }
 
         body {
-            /* A cool dot-grid background so you can clearly see the drop shadows in your browser */
-            background-color: #1e293b; 
-            background-image: radial-gradient(#334155 1px, transparent 1px);
-            background-size: 20px 20px;
-            color: #ffffff;
+            /* Kept dark so you can see the contrast before you take the screenshot */
+            background-color: #050814; 
             font-family: 'Inter', sans-serif;
             padding: 50px;
             display: flex;
@@ -35,43 +31,35 @@
             letter-spacing: 2px;
         }
 
+        /* macOS Window Mockup Container - Now Light Theme */
         .window-mockup {
             width: 800px;
-            /* Slightly lighter base so it pops off a pure dark poster */
-            background: #151932; 
+            background: #ffffff; /* Crisp white app background */
             border-radius: 12px;
-            /* A crisper, semi-transparent border for clean separation */
-            border: 1px solid rgba(144, 176, 255, 0.4); 
-            /* Swapped the dark shadow for a neon/glassmorphic blue glow */
-            box-shadow: 0 0 40px rgba(42, 77, 255, 0.3), 0 10px 30px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            /* Strong shadow to lift it off the dark poster */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8); 
             overflow: hidden;
+            color: #0f172a; /* Dark text for readability */
         }
 
         .window-header {
-            background: #0a0c1a;
+            background: #f1f5f9; /* Light grey header */
             padding: 12px 16px;
             display: flex;
             align-items: center;
-            border-bottom: 1px solid #1f2545;
+            border-bottom: 1px solid #e2e8f0;
         }
 
-        .dots {
-            display: flex;
-            gap: 8px;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
+        .dots { display: flex; gap: 8px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
         .dot.red { background: #ff5f56; }
         .dot.yellow { background: #ffbd2e; }
         .dot.green { background: #27c93f; }
 
         .search-bar {
             margin: 0 auto;
-            background: #1f2545;
+            background: #e2e8f0;
             border-radius: 6px;
             padding: 4px 120px 4px 12px;
             font-size: 12px;
@@ -90,58 +78,41 @@
         /* --- 1. Curriculum Browser Styles --- */
         .sidebar {
             width: 220px;
-            background: #0d1024;
-            border-right: 1px solid #1f2545;
+            background: #f8fafc;
+            border-right: 1px solid #e2e8f0;
             padding: 20px 0;
             flex-shrink: 0;
         }
         .sidebar-item {
             padding: 12px 20px;
             font-size: 14px;
-            color: #94a3b8;
+            color: #64748b;
             cursor: pointer;
         }
         .sidebar-item.active {
-            background: rgba(42, 77, 255, 0.2);
-            color: #ffffff;
+            background: #eff6ff; /* Soft blue highlight */
+            color: #2a4dff; /* ContiNUS blue */
             border-left: 3px solid #2a4dff;
             font-weight: 600;
         }
         .main-content {
             flex: 1;
             padding: 30px;
-            background: #11142b;
+            background: #ffffff;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            text-align: left;
-            padding: 12px;
-            border-bottom: 1px solid #1f2545;
-            font-size: 14px;
-        }
-        th { color: #94a3b8; font-weight: 600; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { text-align: left; padding: 12px; border-bottom: 1px solid #f1f5f9; font-size: 14px; }
+        th { color: #64748b; font-weight: 600; }
         .checkbox { width: 16px; height: 16px; background: #2a4dff; border-radius: 4px; display: inline-block; }
-        .checkbox.empty { background: transparent; border: 1px solid #64748b; }
+        .checkbox.empty { background: transparent; border: 1px solid #cbd5e1; }
 
         /* --- 2. Interactive Major Comparator Styles --- */
-        .comparator-grid {
-            display: flex;
-            width: 100%;
-            height: 100%;
-        }
-        .comp-column {
-            flex: 1;
-            padding: 30px;
-            border-right: 1px solid #1f2545;
-        }
+        .comparator-grid { display: flex; width: 100%; height: 100%; }
+        .comp-column { flex: 1; padding: 30px; border-right: 1px solid #e2e8f0; }
         .comp-column:last-child { border-right: none; }
-        .comp-header { font-size: 18px; font-weight: 700; margin-bottom: 20px; color: #fff; }
+        .comp-header { font-size: 18px; font-weight: 700; margin-bottom: 20px; color: #0f172a; }
         .module-tag {
-            background: #1e2445;
+            background: #f8fafc;
             border-left: 3px solid #2a4dff;
             padding: 10px 15px;
             border-radius: 4px;
@@ -149,65 +120,52 @@
             font-size: 14px;
             display: flex;
             justify-content: space-between;
+            color: #334155;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
         }
-        .module-tag.overlap { border-left-color: #27c93f; background: rgba(39, 201, 63, 0.1); }
-        .mc-badge { background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; font-size: 12px;}
+        .module-tag.overlap { border-left-color: #27c93f; background: #f0fdf4; }
+        .mc-badge { background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-size: 12px; color: #475569;}
 
         /* --- 3. Semester Planner Styles --- */
-        .planner-container {
-            padding: 30px;
-            display: flex;
-            gap: 20px;
-            width: 100%;
-            overflow-x: hidden;
-        }
+        .planner-container { padding: 30px; display: flex; gap: 20px; width: 100%; overflow-x: hidden; }
         .semester-col {
-            background: #0d1024;
+            background: #f8fafc;
             border-radius: 8px;
             flex: 1;
             padding: 15px;
-            border: 1px dashed #2a4dff;
+            border: 1px dashed #cbd5e1;
         }
-        .sem-title { font-size: 14px; color: #94a3b8; margin-bottom: 15px; font-weight: 600; text-align: center;}
+        .sem-title { font-size: 14px; color: #64748b; margin-bottom: 15px; font-weight: 600; text-align: center;}
         .drag-card {
-            background: #1f2545;
+            background: #ffffff;
             padding: 12px;
             border-radius: 6px;
             margin-bottom: 10px;
             font-size: 13px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
             border-left: 3px solid #ffbd2e;
+            color: #0f172a;
         }
 
         /* --- 4. Degree Combination Engine Styles --- */
-        .engine-container {
-            padding: 40px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .combination-title { font-size: 24px; font-weight: 700; margin-bottom: 30px; }
+        .engine-container { padding: 40px; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .combination-title { font-size: 24px; font-weight: 700; margin-bottom: 30px; color: #0f172a;}
         .plus-icon { color: #64748b; margin: 0 15px; }
-        .stats-row {
-            display: flex;
-            gap: 30px;
-            width: 100%;
-            margin-top: 20px;
-        }
+        .stats-row { display: flex; gap: 30px; width: 100%; margin-top: 20px; }
         .stat-box {
             flex: 1;
-            background: #1e2445;
+            background: #ffffff;
             padding: 20px;
             border-radius: 8px;
             text-align: center;
-            border: 1px solid #1f2545;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
         }
         .stat-value { font-size: 32px; font-weight: 700; color: #2a4dff; margin-bottom: 5px; }
-        .stat-value.green { color: #27c93f; }
-        .stat-value.red { color: #ff5f56; }
-        .stat-label { font-size: 12px; color: #94a3b8; text-transform: uppercase; }
+        .stat-value.green { color: #16a34a; }
+        .stat-value.red { color: #dc2626; }
+        .stat-label { font-size: 12px; color: #64748b; text-transform: uppercase; }
 
     </style>
 </head>
@@ -232,7 +190,7 @@
                 </div>
                 <div class="main-content">
                     <h2 style="margin:0 0 5px 0;">Artificial Intelligence Major</h2>
-                    <p style="color: #94a3b8; margin: 0 0 20px 0; font-size: 14px;">Total Core MCs Required: 40</p>
+                    <p style="color: #64748b; margin: 0 0 20px 0; font-size: 14px;">Total Core MCs Required: 40</p>
                     <table>
                         <tr>
                             <th>Module Code</th>
@@ -310,19 +268,19 @@
             <div class="app-body planner-container">
                 <div class="semester-col">
                     <div class="sem-title">YEAR 1 / SEM 1</div>
-                    <div class="drag-card"><strong>CS1101S</strong><br><span style="color:#94a3b8">Programming Methodology</span></div>
-                    <div class="drag-card"><strong>MA1521</strong><br><span style="color:#94a3b8">Calculus for Computing</span></div>
-                    <div class="drag-card"><strong>IS1108</strong><br><span style="color:#94a3b8">Digital Ethics</span></div>
+                    <div class="drag-card"><strong>CS1101S</strong><br><span style="color:#64748b">Programming Methodology</span></div>
+                    <div class="drag-card"><strong>MA1521</strong><br><span style="color:#64748b">Calculus for Computing</span></div>
+                    <div class="drag-card"><strong>IS1108</strong><br><span style="color:#64748b">Digital Ethics</span></div>
                 </div>
                 <div class="semester-col">
                     <div class="sem-title">YEAR 1 / SEM 2</div>
-                    <div class="drag-card" style="border-left-color: #2a4dff;"><strong>CS2030S</strong><br><span style="color:#94a3b8">Programming Methodology II</span></div>
-                    <div class="drag-card" style="border-left-color: #2a4dff;"><strong>CS2040S</strong><br><span style="color:#94a3b8">Data Structures</span></div>
-                    <div class="drag-card" style="border-left-color: #27c93f;"><strong>GEA1000</strong><br><span style="color:#94a3b8">Quantitative Reasoning</span></div>
+                    <div class="drag-card" style="border-left-color: #2a4dff;"><strong>CS2030S</strong><br><span style="color:#64748b">Programming Methodology II</span></div>
+                    <div class="drag-card" style="border-left-color: #2a4dff;"><strong>CS2040S</strong><br><span style="color:#64748b">Data Structures</span></div>
+                    <div class="drag-card" style="border-left-color: #27c93f;"><strong>GEA1000</strong><br><span style="color:#64748b">Quantitative Reasoning</span></div>
                 </div>
                 <div class="semester-col">
                     <div class="sem-title">YEAR 2 / SEM 1</div>
-                    <div class="drag-card" style="border-style: dashed; border-color: #64748b; background: transparent;"><em>Drop module here...</em></div>
+                    <div class="drag-card" style="border-style: dashed; border-left-width: 1px; border-color: #cbd5e1; background: transparent; box-shadow: none;"><em>Drop module here...</em></div>
                 </div>
             </div>
         </div>
@@ -341,15 +299,15 @@
                 <div class="combination-title">
                     <span style="color: #2a4dff;">AI Major</span>
                     <span class="plus-icon">+</span>
-                    <span style="color: #90b0ff;">Double Degree in Business</span>
+                    <span style="color: #0f172a;">Double Degree in Business</span>
                 </div>
                 
-                <div style="width: 100%; height: 20px; background: #1f2545; border-radius: 10px; overflow: hidden; display: flex;">
+                <div style="width: 100%; height: 20px; background: #e2e8f0; border-radius: 10px; overflow: hidden; display: flex;">
                     <div style="width: 60%; background: #2a4dff;" title="AI Major MCs"></div>
                     <div style="width: 15%; background: #27c93f;" title="Overlapping MCs"></div>
                     <div style="width: 25%; background: #ffbd2e;" title="Business MCs"></div>
                 </div>
-                <div style="display: flex; width: 100%; justify-content: space-between; margin-top: 10px; font-size: 12px; color: #94a3b8;">
+                <div style="display: flex; width: 100%; justify-content: space-between; margin-top: 10px; font-size: 12px; color: #64748b; font-weight: 600;">
                     <span>Primary Major</span>
                     <span>Overlap</span>
                     <span>Second Degree</span>
@@ -360,7 +318,7 @@
                         <div class="stat-value">160</div>
                         <div class="stat-label">Standard Graduation MCs</div>
                     </div>
-                    <div class="stat-box" style="border-color: #27c93f;">
+                    <div class="stat-box" style="border: 2px solid #27c93f;">
                         <div class="stat-value green">24</div>
                         <div class="stat-label">Overlapping MCs Detected</div>
                     </div>
